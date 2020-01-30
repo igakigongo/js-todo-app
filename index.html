@@ -4,13 +4,44 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Jubei's Todo App</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento&display=swap&subset=latin-ext" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap"	/>
+		<title>Jubei's Todo App</title>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Sacramento&display=swap&subset=latin-ext"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
 	</head>
-	<body class="p-5">
-    <div class="mt-5">
-      <h1 class='display-1 text-center text-white'>Todo&nbsp;<span class="text-success">App</span></h1>
-    </div>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav class="navbar navbar-light bg-success py-0">
+					<div class="container-fluid px-0">
+						<a class="navbar-brand" href="#">
+							<i class="fa fa-cube d-inline-block text-white"></i>
+							Todo App
+						</a>
+					</div>
+				</nav>
+			</header>
+			<nav id="projects-nav" class="bg-white p-3 pt-5 shadow-lg">
+        <h1>Projects</h1>
+      </nav>
+			<main class="p-5" id="app-container">
+				<div class="container-fluid">
+					<div class="card shadow-lg">
+						<div class="card-body">
+							<h1 class="display-1">Todos Grid Area</h1>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
 	</body>
 </html>
