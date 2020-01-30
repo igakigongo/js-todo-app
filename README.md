@@ -43,7 +43,7 @@ npm run production
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](github.com/igakigongo/js-restaurant/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](github.com/igakigongo/js-todo-app/tags). 
 
 ## Authors
 
