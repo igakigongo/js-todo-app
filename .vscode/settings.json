@@ -12,12 +12,14 @@
     "Jubei's",
     "Kigongo",
     "Shoarma",
+    "Todos",
     "crossorigin",
     "igakigongo",
     "jubei",
     "linebreak",
     "parens",
     "readonly",
-    "stylelint"
+    "stylelint",
+    "unstyled"
   ]
 }

@@ -64,7 +64,9 @@ module.exports = {
   },
   plugins: [
     extractCSS,
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: true,
+    }),
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'dist/index.html'),
       inject: true,
