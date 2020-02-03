@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Jubei's Todo App</title>
+		<title>Todo App</title>
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Sacramento&display=swap&subset=latin-ext"
@@ -31,10 +31,39 @@
 				</nav>
 			</header>
 			<nav id="projects-nav" class="p-3 pt-5">
-				<h4>Projects</h4>
+				<h4 class="d-flex flex-row justify-content-between">
+					<span>Projects</span>
+					<button
+						class="btn mx-2 p-2 shadow-lg btn-show-form"
+						data-toggle="collapse"
+						data-target="#addProjectForm"
+						type="button"
+						aria-controls="addProjectForm"
+						aria-expanded="false"
+					>
+						<i class="fa fa-plus fa-fw"></i>
+					</button>
+				</h4>
+				<div class="bg-white collapse p-2 rounded-lg shadow-lg" id="addProjectForm">
+					<form>
+						<div class='form-group'>
+							<span class='text-danger'></span>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="name" placeholder="project name" />
+						</div>
+						<button type="submit" class="btn btn-block btn-primary btn-sm">Submit</button>
+					</form>
+				</div>
 			</nav>
 			<main class="p-5" id="app-container">
 				<div class="container-fluid">
+					<div class="alert alert-info alert-dismissible fade show" role="alert">
+						<strong>Oops...!!</strong> We do not have anything to show because you have not yet created any todo items
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 					<div class="card shadow-lg">
 						<div class="card-body">
 							<h1 class="display-1">Todos App</h1>
@@ -45,18 +74,33 @@
 			<nav id="key" class="bg-white shadow-lg p-3 pt-5">
 				<h4>Item Priority Level</h4>
 				<button type="button" class="btn btn-block btn-sm btn-danger my-2 text-left">
-					<span class="badge badge-light mr-2">4</span> URGENT 
+					<span class="badge badge-light mr-2">4</span> URGENT
 				</button>
 				<button type="button" class="btn btn-block btn-sm btn-primary my-2 text-left">
-					<span class="badge badge-light mr-2">3</span> HIGH 
+					<span class="badge badge-light mr-2">3</span> HIGH
 				</button>
 				<button type="button" class="btn btn-block btn-sm btn-warning my-2 text-left">
-					<span class="badge badge-light mr-2">2</span> MEDIUM 
+					<span class="badge badge-light mr-2">2</span> MEDIUM
 				</button>
 				<button type="button" class="btn btn-block btn-sm btn-success my-2 text-left">
-					<span class="badge badge-light mr-2">1</span> LOW 
+					<span class="badge badge-light mr-2">1</span> LOW
 				</button>
 			</nav>
 		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
 	</body>
 </html>

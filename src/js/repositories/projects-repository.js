@@ -1,4 +1,3 @@
-import uuid from 'uuid/v4';
 import GenericRepository from './generic-repository';
 import Project from '../models/project';
 
@@ -10,7 +9,8 @@ class ProjectsRepository extends GenericRepository {
     super(key);
     const itemsFromLocalStorage = localStorage.getItem(key);
     if (!itemsFromLocalStorage) {
-      this.add(new Project(new Date(), uuid(), 'Default'));
+      const id = this.maxId + 1;
+      this.add(new Project(new Date(), id, 'Default'));
       return;
     }
 

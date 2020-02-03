@@ -38,6 +38,11 @@ class GenericRepository {
     return -1;
   }
 
+  get maxId() {
+    if (this.items.length === 0) return 0;
+    return Math.max(...this.items.map(item => item.id));
+  }
+
   syncStorage() {
     if (!window.localStorage) return;
     const serializableItems = this.items.map(item => item.asJsonSerializable());
