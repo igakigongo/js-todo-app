@@ -126,8 +126,6 @@ export const createEditTodoForm = () => {
 export function clearFormFields() {
   const form = this;
   const [inputFields, selectLists] = [form.querySelectorAll('input'), form.querySelectorAll('select')];
-  console.log(inputFields);
-  console.log(selectLists);
   inputFields.forEach(field => {
     field.value = '';
   });
