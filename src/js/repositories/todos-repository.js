@@ -1,4 +1,5 @@
 import GenericRepository from './generic-repository';
+import Todo from '../models/todo';
 
 // make sure the key cannot be over-written
 const key = 'JUBEI-TODO-APP-TODOS-REPOSITORY';
@@ -9,7 +10,11 @@ class TodosRepository extends GenericRepository {
     const itemsFromLocalStorage = localStorage.getItem(key);
     if (!itemsFromLocalStorage) {
       localStorage.setItem(key, JSON.stringify([]));
+      return;
     }
+
+    const itemsAsJson = JSON.parse(itemsFromLocalStorage);
+    this.items = itemsAsJson.map(item => Todo.parse(item));
   }
 
   static get KEY() {

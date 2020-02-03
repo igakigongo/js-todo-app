@@ -10,7 +10,7 @@ class TodoItem {
     this.id = id;
     this.priority = priority || PriorityLevel.LOW;
     this.projectId = projectId;
-    this.title = title.trim();
+    this.title = title;
   }
 
   asJsonSerializable() {
@@ -24,6 +24,20 @@ class TodoItem {
       title: this.title,
     };
     return serializableObject;
+  }
+
+  static parse(anonymousObject, format = 'JSON') {
+    switch (format) {
+      case 'JSON': {
+        const {
+          createdOn, description, dueDate, id, priority, projectId, title,
+        } = anonymousObject;
+        return new TodoItem(createdOn, description, dueDate, id, priority, projectId, title);
+      }
+
+      default:
+        throw Error('Unsupported format for parsing');
+    }
   }
 }
 
