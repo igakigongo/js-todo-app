@@ -1,10 +1,10 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 @keyframes expand {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
 }
 
 @mixin make-container-bounds($device-min-width, $max-container-width) {
@@ -15,15 +15,15 @@
 	}
 }
 
-@mixin make-round-font-awesome-btn($background-color, $text-color){
-  align-items: center;
-  color: $text-color !important;
-  background-color: $background-color !important;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: row;
-  height: 2.25rem !important;
-  width: 2.25rem !important;
+@mixin make-round-font-awesome-btn($background-color, $text-color) {
+	align-items: center;
+	color: $text-color !important;
+	background-color: $background-color !important;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: row;
+	height: 2.25rem !important;
+	width: 2.25rem !important;
 }
 
 $font-family-primary: "Roboto Condensed", sans-serif;
@@ -32,79 +32,86 @@ $theme-color: #563d7c;
 $theme-gray: #f5f5f5;
 $theme-white: #fff;
 
-.btn-primary {
+.bg-primary {
   background-color: $theme-color !important;
-  border: 1px solid $theme-color;
+}
+
+.btn-primary {
+	background-color: $theme-color !important;
+	border: 1px solid $theme-color;
+}
+
+.text-primary {
+  color: $theme-color !important;
 }
 
 #wrapper {
-  background-color: $theme-gray;
+	background-color: $theme-gray;
 	display: grid;
 	grid-template-areas:
 		"navbar navbar navbar"
 		"projects-nav main-area key";
 
-  grid-template-columns: 300px 1fr 300px;
-  grid-template-rows: 60px 1fr;
-  height: 100vh;
-  width: 100vw;
+	grid-template-columns: 300px 1fr 300px;
+	grid-template-rows: 60px 1fr;
+	height: 100vh;
+	width: 100vw;
 
 	header {
 		grid-area: navbar;
 		@include make-container-bounds(1920px, 1680px);
 
-    nav {
-      background-color: $theme-color !important;
-    }
+		nav {
+			background-color: $theme-color !important;
+		}
 
 		.navbar-brand {
 			color: $theme-white;
 			font-family: $font-family-primary;
-      font-size: 2rem;
+			font-size: 2rem;
 		}
-  }
-  
-  #projects-nav {
-    color: $theme-color;
-    grid-area: projects-nav;
+	}
+}
 
-    .btn-show-form {
-      @include make-round-font-awesome-btn($theme-white, $theme-color);
-    }
+#projects-nav {
+	color: $theme-color;
+	grid-area: projects-nav;
 
-    .project {
-      align-items: center;
-      animation: expand .5s ease-in-out;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+	.btn-show-form {
+		@include make-round-font-awesome-btn($theme-white, $theme-color);
+	}
 
-      .btn-delete {
-        @include make-round-font-awesome-btn($theme-gray, $theme-color);
-      }
-    }
-  }
+	.project {
+		align-items: center;
+		animation: expand 0.5s ease-in-out;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 
-  #app-container {
-    grid-area: main-area;
+		.btn-delete {
+			@include make-round-font-awesome-btn($theme-gray, $theme-color);
+		}
+	}
+}
 
-    .card {
-      min-height: 500px;
+#app-container {
+	grid-area: main-area;
 
-      .card-body{
-        align-items: center;
-        color: $theme-color;
-        display: flex;
-        flex-direction: row;
-        font-family: $font-family-secondary;
-        text-shadow: 1px 1px #000;
-        justify-content: center;
-      }
-    }
-  }
+	.card {
+		.card-body h2 {
+			color: $theme-color;
+			font-family: $font-family-secondary;
+		}
+	}
+}
 
-  #key {
-    color: $theme-color;
-    grid-area: key;
+#key {
+	color: $theme-color;
+	grid-area: key;
+}
+
+#todos-list {
+  .todo {
+    animation: expand 0.5s ease-in-out;
   }
 }

@@ -1,5 +1,6 @@
 import DataStore from '../repositories';
 import Project from '../models/project';
+import EventType from '../event-types';
 
 // Assume this to be an application module that runs as soon as it's loaded in
 // the browser
@@ -109,7 +110,12 @@ const ProjectsNavigationComponent = (() => {
       } else {
         listElement.appendChild(createProjectListElement(project));
       }
-
+      const event = new CustomEvent(EventType.PROJECT_CREATED, {
+        detail: {
+          project,
+        },
+      });
+      document.dispatchEvent(event);
       setTimeout(() => {
         createProjectForm.clearForm();
         divContainingForm.thenHideForm();

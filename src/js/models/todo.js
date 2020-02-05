@@ -1,10 +1,10 @@
 import PriorityLevel from './priority-level';
 
 class TodoItem {
-  constructor(description, dueDate, id, priority, projectId, title) {
+  constructor(createdOn, description, dueDate, id, priority, projectId, title) {
     if (!projectId) throw Error('Invalid Project');
     if (!title) throw Error('Invalid title');
-    this.createdOn = new Date();
+    this.createdOn = createdOn || new Date();
     this.description = description || null;
     this.dueDate = dueDate || null;
     this.id = id;
