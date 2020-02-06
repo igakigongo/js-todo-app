@@ -1,8 +1,65 @@
 import PriorityLevel from '../models/priority-level';
 import DataStore from '../repositories';
+import { createEditTodoForm, queryFormValuesByName } from '../ui-helpers';
 
 const ListTodosComponent = (() => {
   const rootElement = document.querySelector('#todos-list');
+
+  /**
+   * Only called when we need to re-render a todoItem after canceling edit action
+   * is invoked from the UI
+   */
+  const handleRenderTodo = (evt) => {
+    evt.preventDefault();
+    const { id } = evt.target.dataset;
+    const todoItem = DataStore.todosRepository.find(+id);
+    // eslint-disable-next-line no-use-before-define
+    const todoDOMElement = createTodoItemDOMElement(todoItem);
+    const oldChildDOMElement = rootElement.querySelector(`#todo-${id}`);
+    rootElement.replaceChild(todoDOMElement, oldChildDOMElement);
+  };
+
+  /**
+   * Handle update todo Item then rebuild that part of the UI
+   * @param {MouseEvent} evt
+   */
+  const handleUpdateTodo = (evt) => {
+    evt.preventDefault();
+    const form = evt.target;
+    const id = form.querySelector('input[type="hidden"]').value;
+    const options = form.queryFormValuesByName(['description', 'dueDate',
+      'priority', 'projectId', 'title']);
+
+    try {
+      DataStore.todosRepository.update(+id, options);
+      const todoItem = DataStore.todosRepository.find(+id);
+      // eslint-disable-next-line no-use-before-define
+      const todoDOMElement = createTodoItemDOMElement(todoItem);
+      const oldChildDOMElement = rootElement.querySelector(`#todo-${id}`);
+      rootElement.replaceChild(todoDOMElement, oldChildDOMElement);
+    } catch ({ message }) {
+      // eslint-disable-next-line no-alert
+      alert(message);
+    }
+  };
+
+  const renderEditTodoForm = (id) => {
+    const todo = DataStore.todosRepository.find(id);
+    const editForm = createEditTodoForm(todo);
+    const shellElement = rootElement.querySelector(`#shell-todo-${id}`);
+    while (shellElement.firstChild) {
+      shellElement.removeChild(shellElement.firstChild);
+    }
+    shellElement.appendChild(editForm);
+    const [saveButton, cancelButton] = ['Save', 'Cancel']
+      .map(value => shellElement.querySelector(`button[value="${value}"]`));
+    cancelButton.dataset.id = id;
+    saveButton.dataset.id = id;
+
+    cancelButton.addEventListener('click', handleRenderTodo);
+    editForm.queryFormValuesByName = queryFormValuesByName.bind(editForm);
+    editForm.addEventListener('submit', handleUpdateTodo);
+  };
 
   /**
    * Remove a todo node from the DOM, do not rebuild, simply find and delete it
@@ -52,7 +109,10 @@ const ListTodosComponent = (() => {
     editIcon.dataset.id = id;
     editIcon.style.cursor = 'pointer';
     editIcon.title = 'Edit Todo';
-    // editIcon.addEventListener(() => {});
+    editIcon.addEventListener('click', (evt) => {
+      const { id } = evt.target.dataset;
+      renderEditTodoForm(+id);
+    });
 
     const span = document.createElement('span');
     const cardFooter = document.createElement('div');
@@ -123,7 +183,7 @@ const ListTodosComponent = (() => {
     return cardBody;
   };
 
-  const createTodoItemDOMElement = (todoItem) => {
+  function createTodoItemDOMElement(todoItem) {
     const { id } = todoItem;
 
     const col = document.createElement('div');
@@ -141,7 +201,7 @@ const ListTodosComponent = (() => {
     card.append(cardBody, cardFooter);
     col.appendChild(card);
     return col;
-  };
+  }
 
   const appendTodoItemOnUserInterface = (todoItem) => {
     const todoDOMElement = createTodoItemDOMElement(todoItem);

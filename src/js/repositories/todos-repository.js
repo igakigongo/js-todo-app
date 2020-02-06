@@ -21,18 +21,21 @@ class TodosRepository extends GenericRepository {
     return key;
   }
 
-  // description = null, dueDate = null, priority = null, title = null
   update(id, options) {
-    const { index } = this.indexOf(id);
+    const index = this.indexOf(id);
     if (index === -1) return;
 
     const {
-      description, dueDate, priority, title,
+      description, dueDate, priority, projectId, title,
     } = options;
+
+    if (!projectId) throw Error('Invalid project ID');
     if (description) this.items[index].description = description;
     if (dueDate) this.items[index].dueDate = dueDate;
     if (priority) this.items[index].priority = priority;
     if (title) this.items[index].title = title;
+    this.items[index].projectId = +projectId;
+    this.syncStorage();
   }
 
   where(projectId) {

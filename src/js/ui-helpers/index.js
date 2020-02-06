@@ -50,11 +50,11 @@ const createSelectList = (options) => {
   const selectList = document.createElement('select');
   selectList.classList.add(...allClasses);
   selectList.setAttribute('id', id);
-  sortByValue(items, 'value').forEach(project => {
-    const { id, value } = project;
+  sortByValue(items, 'value').forEach(item => {
+    const { text, value } = item;
     const option = document.createElement('option');
-    option.text = value;
-    option.value = id;
+    option.text = text;
+    option.value = value;
     if (option.value === selected) {
       option.selected = true;
     }
@@ -70,15 +70,34 @@ const createTitle = (text) => {
   return titleComponent;
 };
 
-export const createAddTodoForm = () => {
+const createForm = () => {
   const form = document.createElement('form');
   form.classList.add('pb-5');
   form.setAttribute('method', 'post');
+  return form;
+};
 
-  // create a title for the form
+const createFormControls = () => {
+  const controlsDiv = document.createElement('div');
+  controlsDiv.classList.add('col-12');
+
+  const rowDiv = document.createElement('div');
+  rowDiv.classList.add('row');
+
+  const saveButton = createButton({ classes: ['btn', 'btn-primary', 'btn-sm', 'col-5'], text: 'Save' });
+  saveButton.setAttribute('value', 'Save');
+  const cancelButton = createButton({ classes: ['btn', 'btn-secondary', 'btn-sm', 'offset-2', 'col-5'], text: 'Cancel' });
+  cancelButton.setAttribute('value', 'Cancel');
+  rowDiv.append(saveButton, cancelButton);
+  controlsDiv.append(rowDiv);
+  return controlsDiv;
+};
+
+export const createAddTodoForm = () => {
+  const form = createForm();
+
   const formTitle = createTitle('Add Todo');
 
-  // Todo-Title
   const titleInput = createInputField({ id: 'title', type: 'text', placeholder: 'Title' });
 
   const descriptionInput = createInputField({ id: 'description', type: 'text', placeholder: 'Description' });
@@ -86,13 +105,13 @@ export const createAddTodoForm = () => {
   const dueDateInput = createInputField({ id: 'dueDate', type: 'date' });
 
   const projects = DataStore.projectsRepository.findAll().map(x => ({
-    id: x.id,
-    value: x.name,
+    text: x.name,
+    value: x.id,
   }));
   const projectsSelectList = createSelectList({ id: 'projectId', items: projects });
 
   const priorities = Object.getOwnPropertyNames(PriorityLevel).map((name) => ({
-    id: PriorityLevel[name],
+    text: PriorityLevel[name],
     value: PriorityLevel[name],
   }));
 
@@ -102,16 +121,7 @@ export const createAddTodoForm = () => {
   });
 
   // wrap buttons in a div (wrapper)
-  const controlsDiv = document.createElement('div');
-  controlsDiv.classList.add('col-12');
-
-  const rowDiv = document.createElement('div');
-  rowDiv.classList.add('row');
-
-  const saveButton = createButton({ classes: ['btn', 'btn-primary', 'btn-sm', 'col-5'], text: 'Save' });
-  const cancelButton = createButton({ classes: ['btn', 'btn-secondary', 'btn-sm', 'offset-2', 'col-5'], text: 'Cancel' });
-  rowDiv.append(saveButton, cancelButton);
-  controlsDiv.append(rowDiv);
+  const controlsDiv = createFormControls();
 
   // append all controls to the form
   form.append(formTitle, titleInput, descriptionInput, projectsSelectList, dueDateInput,
@@ -119,8 +129,51 @@ export const createAddTodoForm = () => {
   return form;
 };
 
-export const createEditTodoForm = () => {
+export const createEditTodoForm = (todoItem) => {
+  const {
+    description, dueDate, id, priority, projectId, title,
+  } = todoItem;
+  const form = createForm();
+  const formTitle = createTitle('Edit Todo Item');
+  formTitle.classList.add('text-center');
 
+  const hiddenId = document.createElement('input');
+  hiddenId.setAttribute('type', 'hidden');
+  hiddenId.value = id;
+
+  const titleInput = createInputField({ id: 'title', type: 'text', placeholder: 'Title' });
+  titleInput.value = title;
+
+  const descriptionInput = createInputField({ id: 'description', type: 'text', placeholder: 'Description' });
+  descriptionInput.value = description;
+
+  const dueDateInput = createInputField({ id: 'dueDate', type: 'date' });
+  dueDateInput.value = dueDate;
+
+  const projects = DataStore.projectsRepository.findAll().map(x => ({
+    text: x.name,
+    value: x.id,
+  }));
+  const projectsSelectList = createSelectList({ id: 'projectId', items: projects, selected: `${projectId}` });
+
+  const priorities = Object.getOwnPropertyNames(PriorityLevel).map((name) => ({
+    text: PriorityLevel[name],
+    value: PriorityLevel[name],
+  }));
+
+  const prioritiesSelectList = createSelectList({
+    id: 'priority',
+    items: priorities,
+    selected: priority,
+  });
+
+  // wrap buttons in a div (wrapper)
+  const controlsDiv = createFormControls();
+
+  form.append(formTitle, hiddenId, titleInput, descriptionInput, dueDateInput, projectsSelectList,
+    prioritiesSelectList, controlsDiv);
+
+  return form;
 };
 
 export function clearFormFields() {

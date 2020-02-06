@@ -34,6 +34,7 @@ class GenericRepository {
       if (this.items[i].id === id) {
         return i;
       }
+      i += 1;
     }
     return -1;
   }
