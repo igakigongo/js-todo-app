@@ -34,6 +34,10 @@ class TodosRepository extends GenericRepository {
     if (priority) this.items[index].priority = priority;
     if (title) this.items[index].title = title;
   }
+
+  where(projectId) {
+    return this.items.filter(item => item.projectId === projectId);
+  }
 }
 
 export default TodosRepository;

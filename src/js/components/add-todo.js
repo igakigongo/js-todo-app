@@ -65,6 +65,20 @@ const AddTodoComponent = (() => {
     rootElement.append(form, ...priorityButtons);
   };
 
+  const removeProjectFromSelectableProjects = (projectId) => {
+    const selectList = rootElement.querySelector('#projectId');
+    if (!selectList) return;
+    const id = (typeof projectId) === 'number' ? `${projectId}` : projectId;
+    for (let i = 0; i < selectList.options.length;) {
+      const optionElement = selectList.options[i];
+      if (optionElement.value === id) {
+        selectList.removeChild(optionElement);
+        break;
+      }
+      i += 1;
+    }
+  };
+
   const updateListOfSelectableProjects = (project) => {
     const selectList = rootElement.querySelector('#projectId');
     if (!selectList) return;
@@ -77,6 +91,7 @@ const AddTodoComponent = (() => {
 
   return {
     initialize: bootstrapComponent,
+    removeProject: removeProjectFromSelectableProjects,
     updateProjectsSelectList: updateListOfSelectableProjects,
   };
 })();

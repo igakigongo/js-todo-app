@@ -153,16 +153,21 @@ const ListTodosComponent = (() => {
     rootElement.appendChild(todoDOMElement);
   };
 
-  const bootstrapComponent = () => {
-    const todos = DataStore.todosRepository.findAll();
-    todos.forEach((todo, index) => setTimeout(() => {
+  const removeTodos = (projectId) => DataStore.todosRepository
+    .where(projectId)
+    .map(todo => todo.id)
+    .forEach(removeTodoItem);
+
+  const bootstrapComponent = () => DataStore.todosRepository
+    .findAll()
+    .forEach((todo, index) => setTimeout(() => {
       appendTodoItemOnUserInterface(todo);
     }, (index + 1) * 200));
-  };
 
   return {
     addTodoItem: appendTodoItemOnUserInterface,
     initialize: bootstrapComponent,
+    removeTodosAssociatedWith: removeTodos,
   };
 })();
 

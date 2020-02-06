@@ -18,6 +18,12 @@ document.addEventListener(EventType.PROJECT_CREATED, (evt) => {
   AddTodoComponent.updateProjectsSelectList(project);
 });
 
+document.addEventListener(EventType.PROJECT_DELETED, (evt) => {
+  const { id: projectId } = evt.detail;
+  AddTodoComponent.removeProject(projectId);
+  ListTodosComponent.removeTodosAssociatedWith(+projectId);
+});
+
 document.addEventListener(EventType.TODO_ITEM_CREATED, (evt) => {
   const { todoItem } = evt.detail;
   ListTodosComponent.addTodoItem(todoItem);

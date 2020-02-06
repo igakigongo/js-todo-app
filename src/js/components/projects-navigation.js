@@ -54,6 +54,12 @@ const ProjectsNavigationComponent = (() => {
 
     DataStore.projectsRepository.delete(+id);
     listItemNode.parentNode.removeChild(listItemNode);
+    const event = new CustomEvent(EventType.PROJECT_DELETED, {
+      detail: {
+        id,
+      },
+    });
+    document.dispatchEvent(event);
   };
 
   function hide() {
