@@ -28,13 +28,13 @@ For installation of the above listed software please visit their official websit
 
 To begin customizing the software from an IDE follow these steps:
 
-First Run
+First Run in the project root folder
 ```shell
 npm dev
 
 ```
 
-Then open the index page in the browser to view your changes. 
+Then check the index page generated under the dist folder, open the page in the browser to view the application. 
 For a more optimized build with webpack use the script tagged with production in the `package.json` file
 
 ```shell
