@@ -5,7 +5,7 @@
   The main focus is to demonstrate developer's ability to 
   - Organize a JavaScript code base 
   - Use and understand JavaScript patterns such as constructor, factory and module
-  - Use a modern bundler such as React to manage static assets (css/js/images)
+  - Use a modern bundler such as webpack to manage static assets (css/js/images)
   - Use vanilla Javascript to achieve the above tasks
   - Understand new JavaScript language features (ECMAScript 6 and beyond)
   - Use Linters to follow coding styles (both on local machines and on GitHub)
