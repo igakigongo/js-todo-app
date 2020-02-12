@@ -5,7 +5,7 @@
   The main focus is to demonstrate developer's ability to 
   - Organize a JavaScript code base 
   - Use and understand JavaScript patterns such as constructor, factory and module
-  - Use a modern bundler such as React to manage static assets (css/js/images)
+  - Use a modern bundler such as webpack to manage static assets (css/js/images)
   - Use vanilla Javascript to achieve the above tasks
   - Understand new JavaScript language features (ECMAScript 6 and beyond)
   - Use Linters to follow coding styles (both on local machines and on GitHub)
@@ -28,13 +28,13 @@ For installation of the above listed software please visit their official websit
 
 To begin customizing the software from an IDE follow these steps:
 
-First Run
+First Run in the project root folder
 ```shell
 npm dev
 
 ```
 
-Then open the index page in the browser to view your changes. 
+Then check the index page generated under the dist folder, open the page in the browser to view the application. 
 For a more optimized build with webpack use the script tagged with production in the `package.json` file
 
 ```shell
@@ -43,7 +43,7 @@ npm run production
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](github.com/igakigongo/js-restaurant/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](github.com/igakigongo/js-todo-app/tags). 
 
 ## Authors
 

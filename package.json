@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "production": "npx webpack --mode=production",
-    "dev": "npx webpack --watch --mode=development"
+    "build": "npx webpack --mode=production",
+    "dev": "npx webpack --watch --mode=development",
+    "start": "webpack-dev-server --mode development --open"
   },
   "keywords": [],
   "author": "",
@@ -17,17 +18,21 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "^2.3.4",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
+  }
 }
