@@ -10,6 +10,10 @@
   - Understand new JavaScript language features (ECMAScript 6 and beyond)
   - Use Linters to follow coding styles (both on local machines and on GitHub)
 
+## Feature List
+  - Add/Edit/Delete Todo Items
+  - Add Project Types or Categories
+
 ## Getting Started
 
 Clone this repository on your machine then navigate to the directory names `dist` which has all prebuilt files necessary for running the project. 
@@ -52,3 +56,17 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 The project and all associated source code are free for redistribution and modification.
+
+## Desirable Features
+
+  * Make the application responsive - adapt it to mobile screens
+  * Automatically expand the edit window on clicking the edit icon on the todo item
+  * Marking off Todo Items as complete/pending based on status
+  * Add a summary of upcoming todos for easier access
+  * Filtering of Todo Items (By Status/Project)
+
+## Screenshots
+
+### Won Game
+
+![List of Todo Items](todo-app.png)
