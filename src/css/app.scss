@@ -48,6 +48,17 @@ $theme-white: #fff;
 #wrapper {
 	background-color: $theme-gray;
 	display: grid;
+
+	@media screen and (max-width: 576px) {
+		grid-template-areas:
+		"navbar"
+		"projects-nav"
+		"main-area"
+		"key";
+
+		grid-template-columns: repeat(1, 1fr);
+	}
+
 	grid-template-areas:
 		"navbar navbar navbar"
 		"projects-nav main-area key";

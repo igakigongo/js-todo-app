@@ -187,7 +187,7 @@ const ListTodosComponent = (() => {
     const { id } = todoItem;
 
     const col = document.createElement('div');
-    col.classList.add('col-4', 'mb-3', 'todo');
+    col.classList.add('col-12', 'col-lg-4', 'mb-3', 'todo');
     col.setAttribute('id', `todo-${id}`);
 
     const card = document.createElement('div');
