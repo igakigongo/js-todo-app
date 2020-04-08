@@ -67,6 +67,6 @@ The project and all associated source code are free for redistribution and modif
 
 ## Screenshots
 
-### Won Game
+### List of Todo Items
 
 ![List of Todo Items](todo-app.png)
