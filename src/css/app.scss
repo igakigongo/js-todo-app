@@ -49,16 +49,6 @@ $theme-white: #fff;
 	background-color: $theme-gray;
 	display: grid;
 
-	@media screen and (max-width: 576px) {
-		grid-template-areas:
-		"navbar"
-		"projects-nav"
-		"main-area"
-		"key";
-
-		grid-template-columns: repeat(1, 1fr);
-	}
-
 	grid-template-areas:
 		"navbar navbar navbar"
 		"projects-nav main-area key";
@@ -80,6 +70,40 @@ $theme-white: #fff;
 			color: $theme-white;
 			font-family: $font-family-primary;
 			font-size: 2rem;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		grid-template-areas:
+		"navbar"
+		"projects-nav"
+		"main-area"
+		"key";
+
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	@media screen and(min-width: 768px) {
+		grid-template-areas:
+		"navbar navbar"
+		"projects-nav key"
+		"main-area key";
+		grid-template-columns: repeat(2, 1fr);
+
+		header {
+			grid-area: navbar;
+		}
+		
+		#projects-nav {
+			grid-area: projects-nav;
+		}
+
+		#app-container {
+			grid-area: main-area;
+		}
+
+		#key {
+			grid-area: key;
 		}
 	}
 }
