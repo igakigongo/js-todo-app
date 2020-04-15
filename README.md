@@ -10,8 +10,15 @@
   - Understand new JavaScript language features (ECMAScript 6 and beyond)
   - Use Linters to follow coding styles (both on local machines and on GitHub)
 
+## Screenshots
+
+![List of Todo Items](todo-app.png)
+
+## Demo
+  The live version of the application can be found [here](https://edward-todo-app.netlify.com/)
+
 ## Feature List
-  - Add/Edit/Delete Todo Items
+  - Adding, Editing and Deleting Todo Items
   - Add Project Types or Categories
 
 ## Getting Started
@@ -53,6 +60,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * [**Edward Iga Kigongo**](github.com/igakigongo)
 
+## Contact & Profile Links
+* Email: igakigongo@gmail.com
+* LinkedIn: https://www.linkedin.com/in/igakigongo/
+* PluralSight: https://app.pluralsight.com/profile/edward-iga
+
 ## License
 
 The project and all associated source code are free for redistribution and modification.
@@ -60,13 +72,7 @@ The project and all associated source code are free for redistribution and modif
 ## Desirable Features
 
   * Make the application responsive - adapt it to mobile screens
-  * Automatically expand the edit window on clicking the edit icon on the todo item
-  * Marking off Todo Items as complete/pending based on status
+  * Automatically Expand the edit window on clicking the edit icon on the todo item
+  * Mark off Todo Items as complete/pending based on status
   * Add a summary of upcoming todos for easier access
-  * Filtering of Todo Items (By Status/Project)
-
-## Screenshots
-
-### Won Game
-
-![List of Todo Items](todo-app.png)
+  * Filter Todo Items (By Status/Project)
